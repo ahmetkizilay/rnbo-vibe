@@ -1,0 +1,23 @@
+name: Publish Site
+run-name: ${{ github.actor }} triggered pull request
+on:
+  pull_request:
+    branches:
+      - 'main'
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install NPM dependencies
+        run: npm ci
+      - name: Build Project
+        run: npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          artifact-name: pages
+          path: public
