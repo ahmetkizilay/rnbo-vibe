@@ -50,8 +50,6 @@ const setup = async (context) => {
     reader.readAsArrayBuffer(file);
   });
 
-
-
   let paramVibeRate = device.parametersById.get('rate');
   console.log(paramVibeRate);
   document.querySelector('#vibe-rate').addEventListener('input', function(evt) {
